@@ -13,7 +13,14 @@
 <b>Items from my_context:</b>
 <ul>
     {% for my_item in my_list %}
+        {% if my_item > 200 %}
+            <li>{{forloop.counter}} - Item {{my_item}} {{ my_item|add:22 }}</li>
+        {% elif my_item < 200 %}
+            <li>{{forloop.counter}} - Item {{my_item}} {{ my_item|add:10 }}</li>
+        {% else %}
         <li>{{ forloop.counter }} - Item {{ my_item }}</li>
+
+        {% endif %}
     {% endfor %}
 </ul>
 {% endblock %}
