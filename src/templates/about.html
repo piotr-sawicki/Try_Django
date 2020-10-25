@@ -1,11 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>About</title>
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% block content %}
 <h1>About View</h1>
 <p>This is a template</p>
-</body>
-</html>
+{% endblock %}
+
+{% block view_content %}
+<h1>This block is only for view</h1>
+<p>This block is only for view</p>
+{% endblock %}
