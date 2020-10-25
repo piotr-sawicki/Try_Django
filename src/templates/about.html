@@ -5,11 +5,17 @@
 <p>This is a template</p>
 
 <p>
-    {{ my_text }}
+    <b>String from my_context:</b> {{ my_text }}
 </p>
 <p>
-    {{ my_number }}
+    <b>Number from my_context:</b>{{ my_number }}
 </p>
+<b>Items from my_context:</b>
+<ul>
+    {% for my_item in my_list %}
+        <li>{{ forloop.counter }} - Item {{ my_item }}</li>
+    {% endfor %}
+</ul>
 {% endblock %}
 
 {% block view_content %}
