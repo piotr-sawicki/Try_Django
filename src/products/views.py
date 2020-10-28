@@ -3,8 +3,7 @@ from django.shortcuts import render
 from .models import Product
 # Create your views here.
 def product_detail_view(request):
-    obj = Product.objects.get(id=1)
     context = {
-        'object': obj,
+        'object': Product.objects.get(id=1),
     }
-    return render(request, "product/detail.html", context)
+    return render(request, "products/product_detail.html", context)
