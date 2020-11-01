@@ -22,7 +22,7 @@ import products.views as products_v
 urlpatterns = [
     path('', pages_v.home_view, name='home'),
     path('contact/', pages_v.contact_view),
-    path('product/', products_v.product_detail_view),
+    path('product/<int:id>', products_v.dynamic_product_detail_view),
     path('create_product/', products_v.product_create_view),
     path('about/', pages_v.about_view),
     path('admin/', admin.site.urls),
