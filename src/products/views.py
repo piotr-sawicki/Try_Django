@@ -39,31 +39,15 @@ def product_create_view(request):
     return render(request, "products/product_create.html", context)
 
 
-
-def product_detail_view(request):
-    context = {
-        'object': Product.objects.get(id=1),
-    }
-    return render(request, "products/product_detail.html", context)
-
-
-def dynamic_product_detail_view(request, id):
-    # obj = Product.objects.get(id=id)
-    # obj = get_object_or_404(Product, id=id)
-
-    try:
-        obj = Product.objects.get(id=id)
-            # get_object_or_404(Product, id=id)
-    except Product.DoesNotExist:
-        raise Http404
-
+def product_detail_view(request, id):
+    obj = get_object_or_404(Product, id=id)
     context = {
         'object': obj,
     }
     return render(request, "products/product_detail.html", context)
 
 
-def product_delete_object_view(request, id):
+def product_delete_view(request, id):
     print('id: ', id)
     for p in Product.objects.all():
         print(p.id, p.title, p.price, sep=' - ')
@@ -75,6 +59,7 @@ def product_delete_object_view(request, id):
         'object': obj
     }
     return render(request, 'products/product_delete.html', context)
+
 
 def product_list_view(request):
     queryset = Product.objects.all()

@@ -1,6 +1,7 @@
 from django.db import models
 from django.urls import reverse
 
+
 # Create your models here.
 class Product(models.Model):
     title =       models.CharField(max_length=120) # max_length is required
@@ -11,4 +12,4 @@ class Product(models.Model):
 
     def get_absolute_url(self):
         # return f'/product/{self.id}/'
-        return reverse('product-detail', kwargs={"id": self.id})
+        return reverse('products:product-detail', kwargs={"id": self.id})
