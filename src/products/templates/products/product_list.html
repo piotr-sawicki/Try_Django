@@ -1,0 +1,10 @@
+{% include 'base.html' %}
+
+{% block content %}
+<h1>Product List</h1>
+<ul>
+    {% for product in object_list %}
+    <li>{{ product.id }} - {{product.title }} - {{product.price }} </li>
+    {% endfor %}
+</ul>
+{% endblock %}

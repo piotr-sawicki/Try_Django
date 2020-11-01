@@ -63,7 +63,7 @@ def dynamic_product_detail_view(request, id):
     return render(request, "products/product_detail.html", context)
 
 
-def product_delete_object(request, id):
+def product_delete_object_view(request, id):
     print('id: ', id)
     for p in Product.objects.all():
         print(p.id, p.title, p.price, sep=' - ')
@@ -75,3 +75,10 @@ def product_delete_object(request, id):
         'object': obj
     }
     return render(request, 'products/product_delete.html', context)
+
+def product_list_view(request):
+    queryset = Product.objects.all()
+    context = {
+        "object_list": queryset
+    }
+    return render(request, 'products/product_list.html', context)
