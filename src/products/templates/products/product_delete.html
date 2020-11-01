@@ -1,0 +1,14 @@
+{% include 'base.html' %}
+
+{% block content %}
+<h1>Delete View</h1>
+{{ object.title }}
+<form method="post" action=".">{% csrf_token %}
+    <h2>Do you want to delete product {{object.title}} with id={{object.id}}?</h2>
+    <p>
+        <input type="submit" value="yes" />
+        <a href="'../">Cancel</a>
+    </p>
+
+</form>
+{% endblock %}

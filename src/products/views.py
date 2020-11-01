@@ -1,5 +1,5 @@
 from django.http import Http404
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 
 from .forms import ProductForm, RawProductForm
 from .models import Product
@@ -61,3 +61,17 @@ def dynamic_product_detail_view(request, id):
         'object': obj,
     }
     return render(request, "products/product_detail.html", context)
+
+
+def product_delete_object(request, id):
+    print('id: ', id)
+    for p in Product.objects.all():
+        print(p.id, p.title, p.price, sep=' - ')
+    obj = get_object_or_404(Product, id=id)
+    if request.method == 'POST':
+        obj.delete()
+        return redirect('home')
+    context = {
+        'object': obj
+    }
+    return render(request, 'products/product_delete.html', context)
